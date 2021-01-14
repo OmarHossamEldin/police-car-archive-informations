@@ -1,0 +1,37 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production"
+    },
+    "devDependencies": {
+        "@mdi/font": "^5.8.55",
+        "@mdi/js": "^5.8.55",
+        "axios": "^0.21",
+        "bootstrap": "^4.0.0",
+        "jquery": "^3.2",
+        "laravel-mix": "^6.0.6",
+        "lodash": "^4.17.19",
+        "material-design-icons-iconfont": "^6.1.0",
+        "popper.js": "^1.12",
+        "postcss": "^8.1.14",
+        "resolve-url-loader": "^2.3.1",
+        "sass": "^1.20.1",
+        "sass-loader": "^8.0.2",
+        "vue": "^2.5.17",
+        "vue-loader": "^15.9.5",
+        "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+        "@inertiajs/inertia": "^0.8.2",
+        "@inertiajs/inertia-vue": "^0.5.4",
+        "@inertiajs/progress": "^0.2.4",
+        "vuetify": "^2.4.2"
+    }
+}
