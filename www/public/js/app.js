@@ -2945,7 +2945,7 @@ new vue__WEBPACK_IMPORTED_MODULE_1__.default({
       props: {
         initialPage: JSON.parse(el.dataset.page),
         resolveComponent: function resolveComponent(name) {
-          return __webpack_require__("./resources/js/Pages lazy recursive ^\\.\\/.*$")("./".concat(name)).then(function (module) {
+          return __webpack_require__("./resources/js/pages lazy recursive ^\\.\\/.*$")("./".concat(name)).then(function (module) {
             return module["default"];
           });
         }
@@ -95479,24 +95479,28 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_vue__;
 
 /***/ }),
 
-/***/ "./resources/js/Pages lazy recursive ^\\.\\/.*$":
+/***/ "./resources/js/pages lazy recursive ^\\.\\/.*$":
 /*!************************************************************!*\
-  !*** ./resources/js/Pages/ lazy ^\.\/.*$ namespace object ***!
+  !*** ./resources/js/pages/ lazy ^\.\/.*$ namespace object ***!
   \************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var map = {
-	"./": [
-		"./resources/js/Pages/index.vue",
-		"resources_js_Pages_index_vue"
+	"./Auth": [
+		"./resources/js/pages/Auth/index.vue",
+		"resources_js_pages_Auth_index_vue"
 	],
-	"./index": [
-		"./resources/js/Pages/index.vue",
-		"resources_js_Pages_index_vue"
+	"./Auth/": [
+		"./resources/js/pages/Auth/index.vue",
+		"resources_js_pages_Auth_index_vue"
 	],
-	"./index.vue": [
-		"./resources/js/Pages/index.vue",
-		"resources_js_Pages_index_vue"
+	"./Auth/index": [
+		"./resources/js/pages/Auth/index.vue",
+		"resources_js_pages_Auth_index_vue"
+	],
+	"./Auth/index.vue": [
+		"./resources/js/pages/Auth/index.vue",
+		"resources_js_pages_Auth_index_vue"
 	]
 };
 function webpackAsyncContext(req) {
@@ -95514,7 +95518,7 @@ function webpackAsyncContext(req) {
 	});
 }
 webpackAsyncContext.keys = () => Object.keys(map);
-webpackAsyncContext.id = "./resources/js/Pages lazy recursive ^\\.\\/.*$";
+webpackAsyncContext.id = "./resources/js/pages lazy recursive ^\\.\\/.*$";
 module.exports = webpackAsyncContext;
 
 /***/ })
@@ -95596,7 +95600,7 @@ module.exports = webpackAsyncContext;
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if (chunkId === "resources_js_Pages_index_vue") return "js/" + chunkId + ".js";
+/******/ 			if (chunkId === "resources_js_pages_Auth_index_vue") return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
@@ -95723,7 +95727,7 @@ module.exports = webpackAsyncContext;
 /******/ 					if(installedChunkData) {
 /******/ 						promises.push(installedChunkData[2]);
 /******/ 					} else {
-/******/ 						if("resources_js_Pages_index_vue" == chunkId) {
+/******/ 						if("resources_js_pages_Auth_index_vue" == chunkId) {
 /******/ 							// setup Promise in chunk cache
 /******/ 							var promise = new Promise((resolve, reject) => {
 /******/ 								installedChunkData = installedChunks[chunkId] = [resolve, reject];

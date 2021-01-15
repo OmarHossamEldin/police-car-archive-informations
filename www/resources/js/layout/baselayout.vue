@@ -8,9 +8,9 @@
       <!--  -->
     </v-navigation-drawer>
 
-    <v-app-bar app>
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title> accounting-system</v-toolbar-title>
+    <v-app-bar app right dir='rtl'>
+      <v-app-bar-nav-icon  @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-toolbar-title class='app-title'><h2>أرشيف سيارات الشرطة</h2> </v-toolbar-title>
     </v-app-bar>
 
     <v-main>
@@ -26,3 +26,11 @@
     data: () => ({ drawer: null }),
   }
 </script>
+
+<style >
+.app-title{
+  margin-right: 10px;
+  font-family: 'Cairo', sans-serif;
+}
+
+</style>
