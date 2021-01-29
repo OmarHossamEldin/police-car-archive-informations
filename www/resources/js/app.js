@@ -45,7 +45,7 @@ Vue.use(plugin)
 const el = document.getElementById('app')
 
 new Vue({
-  vuetify: new Vuetify(),
+  vuetify: new Vuetify({theme: { dark: true }}),
   render: h => h(App, {
     props: {
       initialPage: JSON.parse(el.dataset.page),

@@ -4,7 +4,7 @@
             <v-layout align-center justify-center>
               <v-flex class='login-form text-xs-center'>
                   <div class="text-center"><h3>تسجيل الدخول</h3></div>
-                  <v-card light>
+                  <v-card >
                     <v-card-text class="pt-4">
                       <v-form >
                         <v-text-field

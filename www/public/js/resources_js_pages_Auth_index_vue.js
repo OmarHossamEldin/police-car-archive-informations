@@ -852,7 +852,6 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "v-card",
-                    { attrs: { light: "" } },
                     [
                       _c(
                         "v-card-text",

@@ -2939,7 +2939,11 @@ _inertiajs_progress__WEBPACK_IMPORTED_MODULE_3__.InertiaProgress.init({
 vue__WEBPACK_IMPORTED_MODULE_1__.default.use(_inertiajs_inertia_vue__WEBPACK_IMPORTED_MODULE_0__.plugin);
 var el = document.getElementById('app');
 new vue__WEBPACK_IMPORTED_MODULE_1__.default({
-  vuetify: new (vuetify__WEBPACK_IMPORTED_MODULE_2___default())(),
+  vuetify: new (vuetify__WEBPACK_IMPORTED_MODULE_2___default())({
+    theme: {
+      dark: true
+    }
+  }),
   render: function render(h) {
     return h(_inertiajs_inertia_vue__WEBPACK_IMPORTED_MODULE_0__.App, {
       props: {
