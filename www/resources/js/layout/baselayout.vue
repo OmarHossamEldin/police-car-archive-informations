@@ -2,16 +2,16 @@
   <v-app id="inspire" right>
     <!-- navbar -->
      <v-app-bar app dir='rtl'>
-      <v-app-bar-nav-icon v-if="$page.props.auth !=null"  @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon v-if="$page.props.auth"  @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title class='app-title'><h2>أرشيف سيارات الشرطة</h2> </v-toolbar-title>
     </v-app-bar>
     <!-- navbar -->
     <!-- sidenavbar -->
-    <v-navigation-drawer v-if="$page.props.auth !=null" v-model="drawer" app right>
+    <v-navigation-drawer v-if="$page.props.auth" v-model="drawer" app right>
        <v-list dense nav dir='rtl'>
          <!-- links -->
          <div v-for="item in items" :key="item.url">
-           <inertia-link  :href="item.url" as="button" type="button" class="sidenavbar-links">
+           <inertia-link v-if="item.saftyQuestion === $page.props.auth.SaftyQuestion"  :href="item.url" as="button" type="button" class="sidenavbar-links">
             <v-list-item  link>
                 <v-list-item-icon>
                   <v-icon>{{ item.icon }}</v-icon>
@@ -45,15 +45,15 @@
       return {
         drawer: null,
         items: [
-          { title: 'لوحه التحكم', icon: 'mdi-view-dashboard', url:'/dashboard' },
-          { title: 'الفئات', icon: 'mdi-google-classroom', url:'/person-classes' },
-          { title: 'الرتب', icon: 'mdi-chevron-triple-up ', url:'/ranks' },
-          { title: 'الادارات', icon: 'mdi-archive', url:'/management' },
-          { title: 'موديلات السيارات', icon: 'mdi-globe-model ', url:'/car-models' },
-          { title: 'انواع السيارات', icon: 'mdi-format-list-bulleted-type', url:'/car-types' },
-          { title: 'الالوان', icon: 'mdi-palette', url:'/colors' },
-          { title: 'المستخدمين', icon: 'mdi-account-group-outline', url:'/users' },
-          { title: 'تسجيل الخروج', icon: 'mdi-logout', url:'/logout' },
+          { title: 'لوحه التحكم', icon: 'mdi-view-dashboard', url:'/dashboard', saftyQuestion:true },
+          { title: 'الفئات', icon: 'mdi-google-classroom', url:'/person-classes', saftyQuestion:true },
+          { title: 'الرتب', icon: 'mdi-chevron-triple-up ', url:'/ranks', saftyQuestion:true },
+          { title: 'الادارات', icon: 'mdi-archive', url:'/management', saftyQuestion:true },
+          { title: 'موديلات السيارات', icon: 'mdi-globe-model ', url:'/car-models', saftyQuestion:true },
+          { title: 'انواع السيارات', icon: 'mdi-format-list-bulleted-type', url:'/car-types', saftyQuestion:true },
+          { title: 'الالوان', icon: 'mdi-palette', url:'/colors', saftyQuestion:true },
+          { title: 'المستخدمين', icon: 'mdi-account-group-outline', url:'/users', saftyQuestion:true },
+          { title: 'تسجيل الخروج', icon: 'mdi-logout', url:'/logout', saftyQuestion:null },
         ],
         
       }

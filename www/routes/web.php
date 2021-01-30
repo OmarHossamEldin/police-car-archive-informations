@@ -26,6 +26,16 @@ Route::group(['prefix'=>'/'],function(){
     
         Route::get('logout', 'App\Http\Controllers\AuthController@logout')->name('logout.action');
 
+        // safetyQuestion form to get key and answer for safety
+        Route::get('create-saftyQuestion','App\Http\Controllers\AuthController@createSaftyQuestion')->name('create.safetyQuestion');
+
+        // answering safetyQuestion to get key and answer for safety
+        Route::post('safetyQuestion','App\Http\Controllers\AuthController@answerQuestion')->name('answerStore'); 
+    
+    });
+
+    Route::group(['middleware' => ['auth', 'SaftyQuestion']], function () {
+
         Route::get('dashboard', 'App\Http\Controllers\AuthController@dashboard')->name('dashboard');
     
     });

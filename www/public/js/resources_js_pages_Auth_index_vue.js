@@ -98,39 +98,48 @@ __webpack_require__.r(__webpack_exports__);
       items: [{
         title: 'لوحه التحكم',
         icon: 'mdi-view-dashboard',
-        url: '/dashboard'
+        url: '/dashboard',
+        saftyQuestion: true
       }, {
         title: 'الفئات',
         icon: 'mdi-google-classroom',
-        url: '/person-classes'
+        url: '/person-classes',
+        saftyQuestion: true
       }, {
         title: 'الرتب',
         icon: 'mdi-chevron-triple-up ',
-        url: '/ranks'
+        url: '/ranks',
+        saftyQuestion: true
       }, {
         title: 'الادارات',
         icon: 'mdi-archive',
-        url: '/management'
+        url: '/management',
+        saftyQuestion: true
       }, {
         title: 'موديلات السيارات',
         icon: 'mdi-globe-model ',
-        url: '/car-models'
+        url: '/car-models',
+        saftyQuestion: true
       }, {
         title: 'انواع السيارات',
         icon: 'mdi-format-list-bulleted-type',
-        url: '/car-types'
+        url: '/car-types',
+        saftyQuestion: true
       }, {
         title: 'الالوان',
         icon: 'mdi-palette',
-        url: '/colors'
+        url: '/colors',
+        saftyQuestion: true
       }, {
         title: 'المستخدمين',
         icon: 'mdi-account-group-outline',
-        url: '/users'
+        url: '/users',
+        saftyQuestion: true
       }, {
         title: 'تسجيل الخروج',
         icon: 'mdi-logout',
-        url: '/logout'
+        url: '/logout',
+        saftyQuestion: null
       }]
     };
   },
@@ -1047,7 +1056,7 @@ var render = function() {
         "v-app-bar",
         { attrs: { app: "", dir: "rtl" } },
         [
-          _vm.$page.props.auth != null
+          _vm.$page.props.auth
             ? _c("v-app-bar-nav-icon", {
                 on: {
                   click: function($event) {
@@ -1064,7 +1073,7 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _vm.$page.props.auth != null
+      _vm.$page.props.auth
         ? _c(
             "v-navigation-drawer",
             {
@@ -1087,42 +1096,49 @@ var render = function() {
                       "div",
                       { key: item.url },
                       [
-                        _c(
-                          "inertia-link",
-                          {
-                            staticClass: "sidenavbar-links",
-                            attrs: {
-                              href: item.url,
-                              as: "button",
-                              type: "button"
-                            }
-                          },
-                          [
-                            _c(
-                              "v-list-item",
-                              { attrs: { link: "" } },
+                        item.saftyQuestion ===
+                        _vm.$page.props.auth.SaftyQuestion
+                          ? _c(
+                              "inertia-link",
+                              {
+                                staticClass: "sidenavbar-links",
+                                attrs: {
+                                  href: item.url,
+                                  as: "button",
+                                  type: "button"
+                                }
+                              },
                               [
                                 _c(
-                                  "v-list-item-icon",
-                                  [_c("v-icon", [_vm._v(_vm._s(item.icon))])],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-list-item-content",
+                                  "v-list-item",
+                                  { attrs: { link: "" } },
                                   [
-                                    _c("v-list-item-title", [
-                                      _vm._v(_vm._s(item.title))
-                                    ])
+                                    _c(
+                                      "v-list-item-icon",
+                                      [
+                                        _c("v-icon", [
+                                          _vm._v(_vm._s(item.icon))
+                                        ])
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-item-content",
+                                      [
+                                        _c("v-list-item-title", [
+                                          _vm._v(_vm._s(item.title))
+                                        ])
+                                      ],
+                                      1
+                                    )
                                   ],
                                   1
                                 )
                               ],
                               1
                             )
-                          ],
-                          1
-                        )
+                          : _vm._e()
                       ],
                       1
                     )

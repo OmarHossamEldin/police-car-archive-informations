@@ -60,6 +60,35 @@ class AuthController extends Controller
             ['type' => 'success','text' => 'لقد تم تسجيل الخروج بنجاح']
         );
     }
+    /**
+     * get random question and send it for the user.
+     * @return view 
+     */
+    public function createSaftyQuestion(){
+        $questiones=[
+            "ما هو رقم المنزل واسم الشارع الذي كنت تعيش فيه وانت طفل/طفله؟",
+            "ما هي الأرقام الأربعة الأخيرة من رقم هاتفك؟",
+            "ما المدرسة الابتدائية التي التحقت بها؟",
+            "في أي  مدينة كانت أول وظيفة لك؟",
+            "في أي مدينة أو مدينة تسكن حاليا؟",
+            "ما هو اسم طفالك؟",
+            "ما هي آخر خمسة أرقام من رقم رخصة القيادة/ البطاقة الخاصة بك؟",
+            "ما هو اسم جدتك (على جانب والدتك)؟",
+            "في أي مدينة يعيش اقرب اصدقائك؟",
+            "ما هو تاريخ ميلاد طفلك؟",
+            "ما هو تاريخ ميلادك؟"
+        ];
+        // get random index from array $questions
+        $key = array_rand($questiones);
+    
+        $saftyInfo=[
+            "question"=>$questiones,
+            "key"=>$key
+        ];
+        return Inertia::render('Auth/create-saftyQuestion', [
+            'saftyInfo' => $saftyInfo,
+        ]);
+    }
     public function answerQuestion(Request $request)
     {
         $ValidatedData=$request->validate([
@@ -67,16 +96,17 @@ class AuthController extends Controller
             'answer'=>'required'
         ]);
 
-        $user=auth('api')->user();
+        $user=auth()->user();
         SaftyQuestion::create([
             'user_id'=>$user->id,
             'key'=>$ValidatedData['key'],
             'answer'=>$ValidatedData['answer']
         ]);
 
-        return response()->json(['type'=>'success','message'=>'your saftyQuestion has been set'],201);
+        return redirect('/dashboard')->with('message', 
+                ['type' => 'success','text' => 'لقد تم تسجيل تسجيل اجابتك بنجاح']
+            );
     }
-
     public function confirmTheUserName(Request $request)
     {
         $ValidatedData=$request->validate([
@@ -106,6 +136,7 @@ class AuthController extends Controller
                 "key"=>$key
             ];
             $response=['type'=>'success','message'=>'Please Answer This Question','saftyInfo'=>$saftyInfo];
+
         }
         else{
             $response=['type'=>'error','message'=>'there is no username here for you!'];

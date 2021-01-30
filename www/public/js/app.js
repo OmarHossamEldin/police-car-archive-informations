@@ -95498,6 +95498,14 @@ var map = {
 		"./resources/js/pages/Auth/index.vue",
 		"resources_js_pages_Auth_index_vue"
 	],
+	"./Auth/create-saftyQuestion": [
+		"./resources/js/pages/Auth/create-saftyQuestion.vue",
+		"resources_js_pages_Auth_create-saftyQuestion_vue"
+	],
+	"./Auth/create-saftyQuestion.vue": [
+		"./resources/js/pages/Auth/create-saftyQuestion.vue",
+		"resources_js_pages_Auth_create-saftyQuestion_vue"
+	],
 	"./Auth/index": [
 		"./resources/js/pages/Auth/index.vue",
 		"resources_js_pages_Auth_index_vue"
@@ -95620,7 +95628,7 @@ module.exports = webpackAsyncContext;
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_pages_Auth_index_vue":1,"resources_js_pages_Dashboard_index_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_pages_Auth_index_vue":1,"resources_js_pages_Auth_create-saftyQuestion_vue":1,"resources_js_pages_Dashboard_index_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

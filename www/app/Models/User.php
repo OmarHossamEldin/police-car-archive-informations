@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -14,18 +13,11 @@ class User extends Authenticatable
     protected $guarded=[];
 
     protected $hidden = [
-        'password','api_token'
+        'password'
     ];
     
-    public function ApiTokenGenerater()
-    {
-        // to GenerateAccessToken
-        $this->api_token = Str::random(60);
-        $this->save();
-        return $this->api_token;
-    }
     public function SaftyQuestion()
     {
-        return $this->hasOne(SaftyQuestion::class);
+        return $this->hasOne('App\Models\SaftyQuestion');
     }
 }
