@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
+use App\Http\Controllers\Redirect;
 
 class AuthController extends Controller
 {
@@ -15,6 +16,19 @@ class AuthController extends Controller
     public function home(){
         return Inertia::render('Auth/index');
     }
+    
+    /**
+     * the Dashboard for the app
+     * @return view of the Dashborad
+     */
+    public function dashboard(){
+        return Inertia::render('Dashboard/index');
+    }
+    /**
+     * get cerdentials and try to authenticate them if they true then redirect to authenticated route
+     * if not it will return to the login page with error message
+     * @return void  
+     */
     public function login(Request $request){
         
         $ValidatedData=$request->validate([
@@ -24,22 +38,22 @@ class AuthController extends Controller
         
         if(Auth::attempt($ValidatedData))
         {
-            $user=Auth::user(); //AuthenticatedUser
-            $user->ApiTokenGenerater(); // generate token
-            return response()->json(['type'=>'success','message' => 'you have been login successfully','user'=>$user,'api_token'=> $user->api_token], 201);
+            //Authenticated User
+            return redirect()->back();
         }
         else
         {
-            return response()->json(['type'=>'error','message' => 'your credentials are wrong'], 400);
+            return redirect()->back();
+            //return response()->json(['type'=>'error','message' => 'your credentials are wrong'], 400);
         }
     }
+    /**
+     * get authenticated user and log him out then return to loginPage with success message.
+     * @return boolean  
+     */
     public function logout(Request $request){
-        $user = auth('api')->user();
-        if ($user) {
-            $user->api_token = null;
-            $user->save();
-        }
-        return response()->json(['type'=>'success','message' => 'User Logged Out.'], 200);
+        $user = auth()->logout();
+        return redirect('/');
     }
     public function answerQuestion(Request $request)
     {

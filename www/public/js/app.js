@@ -95505,6 +95505,22 @@ var map = {
 	"./Auth/index.vue": [
 		"./resources/js/pages/Auth/index.vue",
 		"resources_js_pages_Auth_index_vue"
+	],
+	"./Dashboard": [
+		"./resources/js/pages/Dashboard/index.vue",
+		"resources_js_pages_Dashboard_index_vue"
+	],
+	"./Dashboard/": [
+		"./resources/js/pages/Dashboard/index.vue",
+		"resources_js_pages_Dashboard_index_vue"
+	],
+	"./Dashboard/index": [
+		"./resources/js/pages/Dashboard/index.vue",
+		"resources_js_pages_Dashboard_index_vue"
+	],
+	"./Dashboard/index.vue": [
+		"./resources/js/pages/Dashboard/index.vue",
+		"resources_js_pages_Dashboard_index_vue"
 	]
 };
 function webpackAsyncContext(req) {
@@ -95604,7 +95620,7 @@ module.exports = webpackAsyncContext;
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if (chunkId === "resources_js_pages_Auth_index_vue") return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_pages_Auth_index_vue":1,"resources_js_pages_Dashboard_index_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
@@ -95731,7 +95747,7 @@ module.exports = webpackAsyncContext;
 /******/ 					if(installedChunkData) {
 /******/ 						promises.push(installedChunkData[2]);
 /******/ 					} else {
-/******/ 						if("resources_js_pages_Auth_index_vue" == chunkId) {
+/******/ 						if("css/app" != chunkId) {
 /******/ 							// setup Promise in chunk cache
 /******/ 							var promise = new Promise((resolve, reject) => {
 /******/ 								installedChunkData = installedChunks[chunkId] = [resolve, reject];
