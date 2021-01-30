@@ -39,12 +39,15 @@ class AuthController extends Controller
         if(Auth::attempt($ValidatedData))
         {
             //Authenticated User
-            return redirect()->back();
+            return redirect('/dashboard')->with('message', 
+                ['type' => 'success','text' => 'لقد تم تسجيل الدخول بنجاح']
+            );
         }
         else
         {
-            return redirect()->back();
-            //return response()->json(['type'=>'error','message' => 'your credentials are wrong'], 400);
+            return redirect('/')->with('message', 
+                ['type' => 'error','text' => 'برجاء التاكد من اسم المستخدم وكلمة المرور']
+            );
         }
     }
     /**
@@ -53,7 +56,9 @@ class AuthController extends Controller
      */
     public function logout(Request $request){
         $user = auth()->logout();
-        return redirect('/');
+        return redirect('/')->with('message', 
+            ['type' => 'success','text' => 'لقد تم تسجيل الخروج بنجاح']
+        );
     }
     public function answerQuestion(Request $request)
     {

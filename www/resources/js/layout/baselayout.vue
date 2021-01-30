@@ -72,5 +72,7 @@
 .sidenavbar-links{
   width:100%
 }
-
+.text-right{
+  text-align: right;
+}
 </style>

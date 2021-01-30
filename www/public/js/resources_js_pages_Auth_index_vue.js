@@ -21,6 +21,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'messages'
 });
@@ -233,7 +242,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.app-title{\r\n  margin-right: 10px;\r\n  font-family: 'Cairo', sans-serif;\n}\n.sidenavbar-links{\r\n  width:100%\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.app-title{\r\n  margin-right: 10px;\r\n  font-family: 'Cairo', sans-serif;\n}\n.sidenavbar-links{\r\n  width:100%\n}\n.text-right{\r\n  text-align: right;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -941,28 +950,71 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "v-container",
-    [
-      _c(
-        "v-row",
-        [
-          _c(
-            "v-col",
-            { attrs: { cols: "12" } },
-            [
-              _c("v-alert", { attrs: { dismissible: "", type: "success" } }, [
-                _vm._v(_vm._s(_vm.$page.props.errors))
-              ])
-            ],
-            1
-          )
-        ],
-        1
-      )
-    ],
-    1
-  )
+  return _c("v-container", [
+    _vm.$page.props.errors
+      ? _c(
+          "div",
+          [
+            _c(
+              "v-row",
+              { attrs: { dir: "rtl" } },
+              _vm._l(_vm.$page.props.errors, function(error) {
+                return _c(
+                  "v-col",
+                  { key: error, attrs: { cols: "12" } },
+                  [
+                    _c(
+                      "v-alert",
+                      {
+                        staticClass: "text-right",
+                        attrs: { dismissible: "", type: "error" }
+                      },
+                      [_vm._v(_vm._s(error))]
+                    )
+                  ],
+                  1
+                )
+              }),
+              1
+            )
+          ],
+          1
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.$page.props.flash.message
+      ? _c(
+          "div",
+          [
+            _c(
+              "v-row",
+              [
+                _c(
+                  "v-col",
+                  { attrs: { cols: "12" } },
+                  [
+                    _c(
+                      "v-alert",
+                      {
+                        staticClass: "text-right",
+                        attrs: {
+                          dismissible: "",
+                          type: _vm.$page.props.flash.message.type
+                        }
+                      },
+                      [_vm._v(_vm._s(_vm.$page.props.flash.message.text))]
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ],
+          1
+        )
+      : _vm._e()
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
