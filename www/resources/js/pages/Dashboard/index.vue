@@ -2,7 +2,7 @@
     <baselayout>
         <v-container>
             <v-layout align-center justify-center>
-              dashboard
+              Dashboard
             </v-layout>
         </v-container>
     </baselayout>

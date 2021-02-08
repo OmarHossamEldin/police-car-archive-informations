@@ -23,7 +23,9 @@
                           :rules="[rules.required, rules.counter]"
                         ></v-text-field>
                         <v-layout justify-space-between >
-                            <a href="">لقد نسيت كلمة المرور</a>
+                          <inertia-link  href="/check-user-name"  >
+                          لقد نسيت كلمة المرور
+                          </inertia-link>
                             <v-btn type="submit" >دخول</v-btn>
                         </v-layout>
                       </v-form>

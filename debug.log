@@ -861,3 +861,55 @@ See more tips at https://vuejs.org/guide/deployment.html", source: http://127.0.
 - 22:12:48.875 DEBUG: OnBrowserDestroyed()
 - 22:12:48.781 INFO: Ended application
 - 22:12:48.781 INFO: --------------------------------------------------------
+- 09:38:44.032 INFO: --------------------------------------------------------
+- 09:38:44.032 INFO: Started application
+- 09:38:44.032 INFO: Logging to: D:\Motassemkandil\police-car-archive-informations\debug.log
+- 09:38:44.032 INFO: Log level = DEBUG4
+- 09:38:44.032 INFO: Starting Mongoose 3.9c web server
+- 09:38:44.032 INFO: WWW directory: D:\Motassemkandil\police-car-archive-informations\www\public
+- 09:38:44.032 INFO: Index files: index.html,index.php
+- 09:38:44.032 INFO: CGI interpreter: D:\Motassemkandil\police-car-archive-informations\php\php-cgi.exe
+- 09:38:44.032 INFO: CGI pattern: **.php$
+- 09:38:44.032 INFO: Hide files patterns: 
+- 09:38:44.032 DEBUG: The temp directory returned by OS contains unicode characters: C:\Users\NYSPID~1\AppData\Local\Temp\
+- 09:38:44.047 INFO: CGI environment variables set: TMP=C:\Windows\Temp,TEMP=C:\Windows\Temp,TMPDIR=C:\Windows\Temp,SERVER_NAME=127.0.0.1,PHPDESKTOP_VERSION=57.0
+- 09:38:44.063 INFO: Web server url: http://127.0.0.1:49985/
+- 09:38:44.063 INFO: remote_debugging_port = 56622
+- 09:38:44.063 DEBUG: Command line string for the browser process: "D:\Motassemkandil\police-car-archive-informations\police-car-archive-informations.exe" --no-sandbox --lang=en-US --log-file="D:\Motassemkandil\police-car-archive-informations\debug.log" --remote-debugging-port=56622
+- 09:38:45.000 DEBUG: Command line string for the gpu-process process: "D:\Motassemkandil\police-car-archive-informations\police-car-archive-informations.exe" --type=gpu-process --no-sandbox --lang=en-US --log-file="D:\Motassemkandil\police-car-archive-informations\debug.log" --disable-direct-composition --supports-dual-gpus=false --gpu-driver-bug-workarounds=7,10,18,19,20,23,26,41,74 --disable-gl-extensions="GL_KHR_blend_equation_advanced GL_KHR_blend_equation_advanced_coherent" --gpu-vendor-id=0x1002 --gpu-device-id=0x6719 --gpu-driver-vendor="Advanced Micro Devices, Inc." --gpu-driver-version=15.200.1062.1004 --gpu-driver-date=8-3-2015 --lang=en-US --log-file="D:\Motassemkandil\police-car-archive-informations\debug.log" --service-request-channel-token=F012F8278DF385DA6EFF60495306480F --mojo-platform-channel-handle=1916 /prefetch:2
+- 09:38:45.375 DEBUG: App::OnContextInitialized()
+- 09:38:45.375 DEBUG: Window max width/height = 1840/992
+- 09:38:45.375 DEBUG: GetBrowserWindow(): not found, hwnd = 66890
+- 09:38:45.375 DEBUG: WindowProc(): event WM_GETMINMAXINFO: could not fetch BrowserWindow
+- 09:38:45.454 DEBUG: BrowserWindow::CreateBrowserControl()
+- 09:38:45.579 DEBUG: StoreBrowserWindow(): hwnd = 66890
+- 09:38:45.610 DEBUG: ClientHandler::OnAfterCreated()
+- 09:38:45.610 DEBUG: SetCefBrowser() called in ClientHandler::OnAfterCreated()
+- 09:38:45.000 DEBUG: Command line string for the renderer process: "D:\Motassemkandil\police-car-archive-informations\police-car-archive-informations.exe" --type=renderer --no-sandbox --primordial-pipe-token=3AE9B93FE64C52B682E8324D7EF19397 --lang=en-US --lang=en-US --log-file="D:\Motassemkandil\police-car-archive-informations\debug.log" --enable-pinch --device-scale-factor=1 --num-raster-threads=3 --enable-main-frame-before-activation --content-image-texture-target=0,0,3553;0,1,3553;0,2,3553;0,3,3553;0,4,3553;0,5,3553;0,6,3553;0,7,3553;0,8,3553;0,9,3553;0,10,3553;0,11,3553;0,12,3553;0,13,3553;0,14,3553;0,15,3553;1,0,3553;1,1,3553;1,2,3553;1,3,3553;1,4,3553;1,5,3553;1,6,3553;1,7,3553;1,8,3553;1,9,3553;1,10,3553;1,11,3553;1,12,3553;1,13,3553;1,14,3553;1,15,3553;2,0,3553;2,1,3553;2,2,3553;2,3,3553;2,4,3553;2,5,3553;2,6,3553;2,7,3553;2,8,3553;2,9,3553;2,10,3553;2,11,3553;2,12,3553;2,13,3553;2,14,3553;2,15,3553;3,0,3553;3,1,3553;3,2,3553;3,3,3553;3,4,3553;3,5,3553;3,6,3553;3,7,3553;3,8,3553;3,9,3553;3,10,3553;3,11,3553;3,12,3553;3,13,3553;3,14,3553;3,15,3553 --service-request-channel-token=3AE9B93FE64C52B682E8324D7EF19397 --renderer-client-id=3 --mojo-platform-channel-handle=2296 /prefetch:1
+- 09:38:45.829 DEBUG: OnLoadingStateChange: loading=1, url=
+- 09:38:45.110 DEBUG: OnBrowserCreated()
+[0130/093847.757:ERROR:child_thread_impl.cc(762)] Request for unknown Channel-associated interface: ui::mojom::GpuMain
+- 09:38:58.766 DEBUG: OnContextCreated()
+- 09:38:58.485 INFO: GET 200 /
+- 09:38:58.547 INFO: GET 200 /css/app.css
+- 09:38:58.891 INFO: GET 200 /js/app.js
+[0130/093859.186:INFO:CONSOLE(47880)] "Download the Vue Devtools extension for a better development experience:
+https://github.com/vuejs/vue-devtools", source: http://127.0.0.1:49985/js/app.js (47880)
+[0130/093859.186:INFO:CONSOLE(47890)] "You are running Vue in development mode.
+Make sure to turn on production mode when deploying for production.
+See more tips at https://vuejs.org/guide/deployment.html", source: http://127.0.0.1:49985/js/app.js (47890)
+- 09:38:59.235 INFO: GET 200 /js/resources_js_pages_Auth_index_vue.js
+- 09:38:59.407 INFO: GET 200 /fonts/vendor/@mdi/materialdesignicons-webfont.woff2?6147fc3741c622c5de2c2b736055c301
+- 09:38:59.657 DEBUG: OnLoadingStateChange: loading=0, url=http://127.0.0.1:49985/
+- 09:39:12.141 DEBUG: WM_DESTROY
+- 09:39:12.141 DEBUG: RemoveBrowserWindow(): hwnd = 66890
+- 09:39:12.141 INFO: Stopping Mongoose web server
+- 09:39:12.141 DEBUG: Mongoose webserver stopped immediately
+- 09:39:12.141 DEBUG: OnBeforeClose() hwnd=66898
+- 09:39:12.141 DEBUG: RemoveBrowserWindow(): hwnd = 66898
+- 09:39:12.141 DEBUG: GetBrowserWindow(): not found, hwnd = 66898
+- 09:39:12.141 WARNING: RemoveBrowserWindow() failed: GetBrowserWindow() failed
+- 09:39:12.141 DEBUG: Calling CefQuitMessageLoop()
+- 09:39:12.453 DEBUG: OnBrowserDestroyed()
+- 09:39:12.375 INFO: Ended application
+- 09:39:12.375 INFO: --------------------------------------------------------

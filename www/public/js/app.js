@@ -95498,6 +95498,22 @@ var map = {
 		"./resources/js/pages/Auth/index.vue",
 		"resources_js_pages_Auth_index_vue"
 	],
+	"./Auth/checkUserName": [
+		"./resources/js/pages/Auth/checkUserName.vue",
+		"resources_js_pages_Auth_checkUserName_vue"
+	],
+	"./Auth/checkUserName.vue": [
+		"./resources/js/pages/Auth/checkUserName.vue",
+		"resources_js_pages_Auth_checkUserName_vue"
+	],
+	"./Auth/confirmAnswer": [
+		"./resources/js/pages/Auth/confirmAnswer.vue",
+		"resources_js_pages_Auth_confirmAnswer_vue"
+	],
+	"./Auth/confirmAnswer.vue": [
+		"./resources/js/pages/Auth/confirmAnswer.vue",
+		"resources_js_pages_Auth_confirmAnswer_vue"
+	],
 	"./Auth/create-saftyQuestion": [
 		"./resources/js/pages/Auth/create-saftyQuestion.vue",
 		"resources_js_pages_Auth_create-saftyQuestion_vue"
@@ -95513,6 +95529,14 @@ var map = {
 	"./Auth/index.vue": [
 		"./resources/js/pages/Auth/index.vue",
 		"resources_js_pages_Auth_index_vue"
+	],
+	"./Auth/resetPassword": [
+		"./resources/js/pages/Auth/resetPassword.vue",
+		"resources_js_pages_Auth_resetPassword_vue"
+	],
+	"./Auth/resetPassword.vue": [
+		"./resources/js/pages/Auth/resetPassword.vue",
+		"resources_js_pages_Auth_resetPassword_vue"
 	],
 	"./Dashboard": [
 		"./resources/js/pages/Dashboard/index.vue",
@@ -95628,7 +95652,7 @@ module.exports = webpackAsyncContext;
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_pages_Auth_index_vue":1,"resources_js_pages_Auth_create-saftyQuestion_vue":1,"resources_js_pages_Dashboard_index_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_pages_Auth_index_vue":1,"resources_js_pages_Auth_checkUserName_vue":1,"resources_js_pages_Auth_confirmAnswer_vue":1,"resources_js_pages_Auth_create-saftyQuestion_vue":1,"resources_js_pages_Auth_resetPassword_vue":1,"resources_js_pages_Dashboard_index_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

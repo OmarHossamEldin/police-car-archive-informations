@@ -30,6 +30,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'messages'
 });
@@ -86,11 +87,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'baselayout',
   components: {
     messages: _components_messges__WEBPACK_IMPORTED_MODULE_0__.default
+  },
+  watch: {
+    title: {
+      immediate: true,
+      handler: function handler() {
+        document.title = this.$page.props.title;
+      }
+    }
   },
   data: function data() {
     return {
@@ -135,12 +154,13 @@ __webpack_require__.r(__webpack_exports__);
         icon: 'mdi-account-group-outline',
         url: '/users',
         saftyQuestion: true
-      }, {
+      }],
+      logout: {
         title: 'تسجيل الخروج',
         icon: 'mdi-logout',
         url: '/logout',
-        saftyQuestion: null
-      }]
+        saftyQuestion: true
+      }
     };
   },
   methods: {
@@ -195,6 +215,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'create-saftyQuestion',
@@ -204,8 +228,8 @@ __webpack_require__.r(__webpack_exports__);
   props: ["saftyInfo"],
   data: function data() {
     return {
-      saftyQuestion: null,
       form: {
+        key: null,
         answer: ''
       },
       rules: {
@@ -217,10 +241,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submit: function submit() {
-      this.$inertia.post('/answer', this.form);
-    },
-    gettingSaftyQuestion: function gettingSaftyQuestion() {
-      return this.saftyQuestion = this.saftyInfo.question[this.saftyInfo.key];
+      this.$inertia.post('/safetyQuestion', this.form);
+    }
+  },
+  computed: {
+    saftyQuestion: {
+      get: function get() {
+        this.form.key = this.saftyInfo.key;
+        return this.saftyInfo.questions[this.saftyInfo.key];
+      }
     }
   }
 });
@@ -268,7 +297,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.question-form[data-v-7cdae4a0]{\r\n  margin-top: 20%;\r\n  max-width: 500px;\r\n  font-family: 'Cairo', sans-serif;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.question-form[data-v-7cdae4a0]{\r\n  margin-top: 20%;\r\n  max-width: 500px;\r\n  font-family: 'Cairo', sans-serif;\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -953,6 +982,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("v-container", [
+    _c("br"),
+    _vm._v(" "),
     _vm.$page.props.errors
       ? _c(
           "div",
@@ -1090,7 +1121,7 @@ var render = function() {
                       { key: item.url },
                       [
                         item.saftyQuestion ===
-                        _vm.$page.props.auth.SaftyQuestion
+                        !!_vm.$page.props.auth.SaftyQuestion
                           ? _c(
                               "inertia-link",
                               {
@@ -1136,6 +1167,43 @@ var render = function() {
                       1
                     )
                   }),
+                  _vm._v(" "),
+                  _c(
+                    "inertia-link",
+                    {
+                      staticClass: "sidenavbar-links",
+                      attrs: {
+                        href: _vm.logout.url,
+                        as: "button",
+                        type: "button"
+                      }
+                    },
+                    [
+                      _c(
+                        "v-list-item",
+                        { attrs: { link: "" } },
+                        [
+                          _c(
+                            "v-list-item-icon",
+                            [_c("v-icon", [_vm._v(_vm._s(_vm.logout.icon))])],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-list-item-content",
+                            [
+                              _c("v-list-item-title", [
+                                _vm._v(_vm._s(_vm.logout.title))
+                              ])
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
                   _vm._v(" "),
                   _c("v-divider"),
                   _vm._v(" "),
@@ -1222,15 +1290,19 @@ var render = function() {
                             },
                             [
                               _c("h3", { staticClass: "text-right" }, [
-                                _vm._v(_vm._s(_vm.gettingSaftyQuestion()))
+                                _vm._v(_vm._s(_vm.saftyQuestion))
                               ]),
                               _vm._v(" "),
                               _c("v-divider"),
                               _vm._v(" "),
                               _c("v-text-field", {
                                 attrs: {
+                                  outlined: true,
+                                  rounded: true,
+                                  dense: true,
+                                  reverse: true,
                                   type: "text",
-                                  label: "ادخل اجابة السؤال",
+                                  placeholder: "ادخل اجابة السؤال",
                                   counter: "",
                                   rules: [_vm.rules.required]
                                 },

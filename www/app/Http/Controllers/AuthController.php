@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use App\Http\Controllers\Redirect;
+use App\Models\SaftyQuestion;
+use App\Models\User;
 
 class AuthController extends Controller
 {
@@ -14,7 +16,7 @@ class AuthController extends Controller
      * @return view of the home page
      */
     public function home(){
-        return Inertia::render('Auth/index');
+        return Inertia::render('Auth/index',['title' => 'ارشيف سيارات الشرطة']);
     }
     
     /**
@@ -22,7 +24,7 @@ class AuthController extends Controller
      * @return view of the Dashborad
      */
     public function dashboard(){
-        return Inertia::render('Dashboard/index');
+        return Inertia::render('Dashboard/index',['title' => 'لائحة التحكم']);
     }
     /**
      * get cerdentials and try to authenticate them if they true then redirect to authenticated route
@@ -36,19 +38,9 @@ class AuthController extends Controller
             'password'=>'required|min:8'
         ]);
         
-        if(Auth::attempt($ValidatedData))
-        {
-            //Authenticated User
-            return redirect('/dashboard')->with('message', 
-                ['type' => 'success','text' => 'لقد تم تسجيل الدخول بنجاح']
-            );
-        }
-        else
-        {
-            return redirect('/')->with('message', 
-                ['type' => 'error','text' => 'برجاء التاكد من اسم المستخدم وكلمة المرور']
-            );
-        }
+        return Auth::attempt($ValidatedData) ?
+        redirect('/dashboard')->with('message', ['type' => 'success','text' => 'لقد تم تسجيل الدخول بنجاح']) :
+        redirect('/')->with('message',['type' => 'error','text' => 'برجاء التاكد من اسم المستخدم وكلمة المرور']);
     }
     /**
      * get authenticated user and log him out then return to loginPage with success message.
@@ -82,13 +74,18 @@ class AuthController extends Controller
         $key = array_rand($questiones);
     
         $saftyInfo=[
-            "question"=>$questiones,
+            "questions"=>$questiones,
             "key"=>$key
         ];
         return Inertia::render('Auth/create-saftyQuestion', [
-            'saftyInfo' => $saftyInfo,
+            'title'     => 'سؤال الامان',
+            'saftyInfo' => $saftyInfo
         ]);
     }
+    /**
+     * saveing the answer For User to used it later for reset Password.
+     * @return redirect 
+     */
     public function answerQuestion(Request $request)
     {
         $ValidatedData=$request->validate([
@@ -107,42 +104,52 @@ class AuthController extends Controller
                 ['type' => 'success','text' => 'لقد تم تسجيل تسجيل اجابتك بنجاح']
             );
     }
+
+    public function checkUserName(){
+        return Inertia::render('Auth/checkUserName',['title' => 'تاكيد اسم المستخدم']);
+    }
+
     public function confirmTheUserName(Request $request)
     {
         $ValidatedData=$request->validate([
             'username'=>'required'
         ]);
 
-        $User=User::where('username',$ValidatedData['username'])->first();
+        $User=User::where($ValidatedData)->first();
         
-        if($User== true ){ 
-            $questiones=[
-                "ما هو رقم المنزل واسم الشارع الذي كنت تعيش فيه وانت طفل/طفله؟",
-                "ما هي الأرقام الأربعة الأخيرة من رقم هاتفك؟",
-                "ما المدرسة الابتدائية التي التحقت بها؟",
-                "في أي  مدينة كانت أول وظيفة لك؟",
-                "في أي مدينة أو مدينة تسكن حاليا؟",
-                "ما هو اسم طفالك؟",
-                "ما هي آخر خمسة أرقام من رقم رخصة القيادة/ البطاقة الخاصة بك؟",
-                "ما هو اسم جدتك (على جانب والدتك)؟",
-                "في أي مدينة يعيش اقرب اصدقائك؟",
-                "ما هو تاريخ ميلاد طفلك؟",
-                "ما هو تاريخ ميلادك؟"
-            ];
-            // get the key
-            $key = $User->SaftyQuestion->key;
-            $saftyInfo=[
-                "question"=>$questiones,
-                "key"=>$key
-            ];
-            $response=['type'=>'success','message'=>'Please Answer This Question','saftyInfo'=>$saftyInfo];
+        return $User ? redirect("/confirm-answer/{$User->id}") :
+        redirect('/check-user-name')->with('message', ['type' => 'error','text' => 'برجاء التاكد من اسم المستخدم']);
+       
+    }
 
-        }
-        else{
-            $response=['type'=>'error','message'=>'there is no username here for you!'];
-        }
+    public function confirmAnswerView(User $user){
         
-        return response()->json([$response], 200);
+        $questiones=[
+            "ما هو رقم المنزل واسم الشارع الذي كنت تعيش فيه وانت طفل/طفله؟",
+            "ما هي الأرقام الأربعة الأخيرة من رقم هاتفك؟",
+            "ما المدرسة الابتدائية التي التحقت بها؟",
+            "في أي  مدينة كانت أول وظيفة لك؟",
+            "في أي مدينة أو مدينة تسكن حاليا؟",
+            "ما هو اسم طفالك؟",
+            "ما هي آخر خمسة أرقام من رقم رخصة القيادة/ البطاقة الخاصة بك؟",
+            "ما هو اسم جدتك (على جانب والدتك)؟",
+            "في أي مدينة يعيش اقرب اصدقائك؟",
+            "ما هو تاريخ ميلاد طفلك؟",
+            "ما هو تاريخ ميلادك؟"
+        ];
+        // get the key
+        $key = $user->SaftyQuestion->key;
+
+        $saftyInfo=[
+            "questions"=>$questiones,
+            "key"=>$key
+        ];
+        return Inertia::render('Auth/confirmAnswer',[
+            'title' => 'تاكيد اجاية اسؤال',
+            'type' => 'success',
+            'text' => 'برجاء اجابة السؤال لتمكن من اعادة كلمة المرور',
+            'saftyInfo' => $saftyInfo
+        ]);
     }
 
     public function confirmTheAnswer(Request $request)
@@ -151,24 +158,30 @@ class AuthController extends Controller
             'key'=>'required',
             'answer'=>'required'
         ]);
-        $saftyQ=SaftyQuestion::where(['key'=>$ValidatedData['key'],'answer'=>$ValidatedData['answer']])->first();
+        $saftyQuestion = SaftyQuestion::where($ValidatedData)->first();
         
-        $saftyQ== true ? $response=['type'=>'success','message'=>'reset your password!'] : $response=['type'=>'error','message'=>'your answer is wrong!'];
-        
-        return response()->json([$response], 200);
+        return $saftyQuestion ? redirect("/reset-password/{$saftyQuestion->user->id}") :
+        redirect('/')->with('message', ['type' => 'error','text' => 'لقد قمت بكتابة اجابة خاطئه']);     
     }
 
-    public function resetpassword(Request $request)
-    {
+    public function resetPasswordView(User $user){
+
+        return Inertia::render('Auth/resetPassword',[
+            'title' => 'إعادة كلمة المرور',
+            'type' => 'success',
+            'text' => 'برجاء إدخال كلمة المرور',
+            'user' => $user->id
+        ]);
+    }
+
+    public function resetpassword(Request $request, User $user){
+        
         $ValidatedData=$request->validate([
-            'username'=>'required',
             'password'=>'required|confirmed|min:6'
         ]);
+        $user->password=bcrypt($ValidatedData['password']);
+        $user->save();
 
-        $User=User::where('username',$ValidatedData['username'])->first();
-        $User->password=bcrypt($ValidatedData['password']);
-        $User->save();
-
-        return response()->json(['type'=>'success','message'=>'your password has been reset!'], 200);
+        return redirect('/')->with('message', ['type' => 'success','text' => 'لقد تم إعادة تعين كلمة المرور']);
     }
 }

@@ -7,12 +7,16 @@
                   <v-card >
                     <v-card-text class="pt-4">
                       <v-form @submit.prevent="submit">
-                          <h3 class="text-right">{{gettingSaftyQuestion()}}</h3>
+                          <h3 class="text-right">{{saftyQuestion}}</h3>
                         <v-divider></v-divider>
                         <v-text-field
                           v-model='form.answer'
+                          :outlined="true"
+                          :rounded="true"
+                          :dense="true"
+                          :reverse="true"
                           type='text'
-                          label="ادخل اجابة السؤال"
+                          placeholder="ادخل اجابة السؤال"
                           counter
                           :rules="[rules.required]"
                         ></v-text-field>
@@ -36,8 +40,8 @@ export default {
     props: ["saftyInfo"],
     data:()=>{
       return {
-        saftyQuestion: null,
         form:{
+          key: null,
           answer:'',
         },
         rules: {
@@ -46,13 +50,21 @@ export default {
       }
     },
     methods: {
-        submit() {
-            this.$inertia.post('/answer', this.form)
-        },
-        gettingSaftyQuestion:function(){ 
-          return this.saftyQuestion = this.saftyInfo.question[this.saftyInfo.key] 
+      submit() {
+          this.$inertia.post('/safetyQuestion', this.form)
+      },
+
+    },
+    computed:{
+      saftyQuestion: {
+        get(){
+          this.form.key = this.saftyInfo.key;
+          return this.saftyInfo.questions[this.saftyInfo.key];
         }
-  },
+      },
+      
+    }
+  
 };
 </script>
 
@@ -62,4 +74,5 @@ export default {
   max-width: 500px;
   font-family: 'Cairo', sans-serif;
 }
+
 </style>

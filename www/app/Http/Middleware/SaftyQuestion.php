@@ -19,15 +19,8 @@ class SaftyQuestion
     {
         $user =auth()->user();
 
-        if($user->SaftyQuestion)
-        {
-            return $next($request);
-        }
-        else
-        {
-            return redirect('/create-saftyQuestion')->with('message', 
-                ['type' => 'warning','text' => 'برجاء اجابه سؤال الامان']
-            );
-        }
+        return $user->SaftyQuestion ? $next($request) :
+        redirect('/create-saftyQuestion')->with('message',['type' => 'warning','text' => 'برجاء اجابه سؤال الامان']);
+        
     }
 }

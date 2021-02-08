@@ -30,6 +30,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'messages'
 });
@@ -86,11 +87,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'baselayout',
   components: {
     messages: _components_messges__WEBPACK_IMPORTED_MODULE_0__.default
+  },
+  watch: {
+    title: {
+      immediate: true,
+      handler: function handler() {
+        document.title = this.$page.props.title;
+      }
+    }
   },
   data: function data() {
     return {
@@ -135,12 +154,13 @@ __webpack_require__.r(__webpack_exports__);
         icon: 'mdi-account-group-outline',
         url: '/users',
         saftyQuestion: true
-      }, {
+      }],
+      logout: {
         title: 'تسجيل الخروج',
         icon: 'mdi-logout',
         url: '/logout',
-        saftyQuestion: null
-      }]
+        saftyQuestion: true
+      }
     };
   },
   methods: {
@@ -845,6 +865,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("v-container", [
+    _c("br"),
+    _vm._v(" "),
     _vm.$page.props.errors
       ? _c(
           "div",
@@ -982,7 +1004,7 @@ var render = function() {
                       { key: item.url },
                       [
                         item.saftyQuestion ===
-                        _vm.$page.props.auth.SaftyQuestion
+                        !!_vm.$page.props.auth.SaftyQuestion
                           ? _c(
                               "inertia-link",
                               {
@@ -1028,6 +1050,43 @@ var render = function() {
                       1
                     )
                   }),
+                  _vm._v(" "),
+                  _c(
+                    "inertia-link",
+                    {
+                      staticClass: "sidenavbar-links",
+                      attrs: {
+                        href: _vm.logout.url,
+                        as: "button",
+                        type: "button"
+                      }
+                    },
+                    [
+                      _c(
+                        "v-list-item",
+                        { attrs: { link: "" } },
+                        [
+                          _c(
+                            "v-list-item-icon",
+                            [_c("v-icon", [_vm._v(_vm._s(_vm.logout.icon))])],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-list-item-content",
+                            [
+                              _c("v-list-item-title", [
+                                _vm._v(_vm._s(_vm.logout.title))
+                              ])
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
                   _vm._v(" "),
                   _c("v-divider"),
                   _vm._v(" "),
@@ -1086,7 +1145,7 @@ var render = function() {
           _c(
             "v-layout",
             { attrs: { "align-center": "", "justify-center": "" } },
-            [_vm._v("\n          dashboard\n        ")]
+            [_vm._v("\n          Dashboard\n        ")]
           )
         ],
         1

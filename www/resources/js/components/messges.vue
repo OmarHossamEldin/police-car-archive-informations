@@ -1,5 +1,6 @@
 <template>
     <v-container >
+        <br>
         <div v-if="$page.props.errors" >     
             <v-row dir="rtl">
                 <v-col cols='12' v-for="error in $page.props.errors" :key="error">
