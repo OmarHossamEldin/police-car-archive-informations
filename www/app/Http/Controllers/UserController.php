@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use App\Helpers\collectionFormatter;
 
 class UserController extends Controller
 {
@@ -14,7 +16,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::select(['id', 'name', 'username'])->get();
+        $headers = collectionFormatter::headers($users);
+        return Inertia::render('User/index', [
+            'title' => 'المستخدمين',
+            'headers' => $headers,
+            'users' => $users
+        ]);
     }
 
     /**

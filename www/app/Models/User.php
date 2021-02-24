@@ -10,12 +10,12 @@ class User extends Authenticatable
 {
     use HasFactory, SoftDeletes;
 
-    protected $guarded=[];
+    protected $guarded = [];
 
     protected $hidden = [
         'password'
     ];
-    
+
     public function SaftyQuestion()
     {
         return $this->hasOne('App\Models\SaftyQuestion');

@@ -95553,6 +95553,22 @@ var map = {
 	"./Dashboard/index.vue": [
 		"./resources/js/pages/Dashboard/index.vue",
 		"resources_js_pages_Dashboard_index_vue"
+	],
+	"./User": [
+		"./resources/js/pages/User/index.vue",
+		"resources_js_pages_User_index_vue"
+	],
+	"./User/": [
+		"./resources/js/pages/User/index.vue",
+		"resources_js_pages_User_index_vue"
+	],
+	"./User/index": [
+		"./resources/js/pages/User/index.vue",
+		"resources_js_pages_User_index_vue"
+	],
+	"./User/index.vue": [
+		"./resources/js/pages/User/index.vue",
+		"resources_js_pages_User_index_vue"
 	]
 };
 function webpackAsyncContext(req) {
@@ -95652,7 +95668,7 @@ module.exports = webpackAsyncContext;
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_pages_Auth_index_vue":1,"resources_js_pages_Auth_checkUserName_vue":1,"resources_js_pages_Auth_confirmAnswer_vue":1,"resources_js_pages_Auth_create-saftyQuestion_vue":1,"resources_js_pages_Auth_resetPassword_vue":1,"resources_js_pages_Dashboard_index_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_pages_Auth_index_vue":1,"resources_js_pages_Auth_checkUserName_vue":1,"resources_js_pages_Auth_confirmAnswer_vue":1,"resources_js_pages_Auth_create-saftyQuestion_vue":1,"resources_js_pages_Auth_resetPassword_vue":1,"resources_js_pages_Dashboard_index_vue":1,"resources_js_pages_User_index_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
