@@ -19,9 +19,9 @@ Table of contents
 * Install Composer.
 * Run (Composer Install) To Install Laravel Dependencies -> inside www Directory.
 * Run (npm Install) To Install vue Dependencies -> inside www Directory.
-* Use Commands (php artisan migarte& php artisan db:seed) And You Ready To Use system.
 * copy .env.example into .env for the configurations.
 * create sqlite file on the following path (www/database) then write database name in env file for the connection.
+* Use Commands (php artisan migarte& php artisan db:seed) And You Ready To Use system.
 * lunch exe file
 
 ### Prerequisites
