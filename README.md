@@ -15,10 +15,12 @@ Table of contents
 
 ## Getting Started
 
+* Extract zipfile
 * Install Composer.
-* Run (Composer Install) To Install Laravel Dependencies.
-* Run (npm Install) To Install vue Dependencies.
+* Run (Composer Install) To Install Laravel Dependencies -> inside www Directory.
+* Run (npm Install) To Install vue Dependencies -> inside www Directory.
 * Use Commands (php artisan migarte& php artisan db:seed) And You Ready To Use system.
+* lunch exe file
 
 ### Prerequisites
 
