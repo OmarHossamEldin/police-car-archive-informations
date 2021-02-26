@@ -10,6 +10,15 @@ use App\Helpers\collectionFormatter;
 class UserController extends Controller
 {
     /**
+     * validation rules
+     * @var array
+     */
+    private $validationRules = [
+        'name' => 'required|string',
+        'username' => 'required|string|unique:users',
+        'password' => 'required|min:8'
+    ];
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -18,10 +27,11 @@ class UserController extends Controller
     {
         $users = User::select(['id', 'name', 'username'])->get();
         $headers = collectionFormatter::headers($users);
+        $dataTable = collectionFormatter::data($users);
         return Inertia::render('User/index', [
             'title' => 'المستخدمين',
             'headers' => $headers,
-            'users' => $users
+            'dataTable' => $dataTable
         ]);
     }
 
@@ -33,7 +43,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate($this->validationRules);
+        $validateData['password'] = bcrypt($validateData['password']);
+        $user = User::create($validateData);
+        return response()->json(['message' => 'لقد تم انشاء مستخدم جديد بنجاح', 'user' => $user], 201);
     }
 
     /**
@@ -44,7 +57,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return response()->json(['message' => 'تم ايجاد المستخدم المطلوب', 'user' => $user], 200);
     }
 
     /**
@@ -56,7 +69,10 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $this->validationRules['username'] = 'required|string|unique:users,id';
+        $validateData = $request->validate($this->validationRules);
+        $user->update($validateData);
+        return response()->json(['message' => 'تم تحديث بيانات المستخدم', 'user' => $user], 206);
     }
 
     /**
@@ -67,6 +83,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return response()->json(204);
     }
 }
