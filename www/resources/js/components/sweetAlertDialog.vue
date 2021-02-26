@@ -2,13 +2,13 @@
     <v-dialog
         transition="dialog-top-transition"
         max-width="600"
-        v-model="dialog"
+        v-model="dialogStatus"
     >
-        <template v-slot:default="dialog">
+        <template>
             <v-card>
                 <v-toolbar dir="rtl" :color="type" dark>
                     <h3>
-                        {{message}}
+                        {{ message }}
                         <v-icon>mdi-account-group-outline</v-icon>
                     </h3>
                 </v-toolbar>
@@ -24,7 +24,9 @@
                     </div>
                 </v-card-text>
                 <v-card-actions class="justify-end">
-                    <v-btn text @click="dialog.value = false">Close</v-btn>
+                    <v-btn text @click="$emit('close-dialog', dialog)"
+                        >اغلاق</v-btn
+                    >
                 </v-card-actions>
             </v-card>
         </template>
@@ -34,7 +36,17 @@
 <script>
 export default {
     name: "sweetAlertDialog",
-    props: ["dialog", "type", "message", "errors"]
+    props: ["dialog", "type", "message", "errors"],
+    data: () => {
+        return {
+            dialogStatus: ""
+        };
+    },
+    watch: {
+        dialog() {
+            this.dialogStatus = this.dialog;
+        }
+    }
 };
 </script>
 

@@ -38,6 +38,7 @@
                                     >
                                         <v-text-field
                                             v-model="defaultItem[index]"
+                                            :readonly="index == 'id'"
                                             :label="index"
                                         ></v-text-field>
                                     </v-col>
@@ -53,7 +54,7 @@
                             <v-btn
                                 color="blue darken-1"
                                 text
-                                @click="$emit('NewRecord', defaultItem)"
+                                @click="save(defaultItem)"
                             >
                                 حفظ
                             </v-btn>
@@ -110,7 +111,7 @@
 <script>
 export default {
     name: "crudDataTable",
-    props: ["tableTitle", "singleItemTitle", "record","headers","passedRows"],
+    props: ["tableTitle", "singleItemTitle", "record", "headers", "passedRows"],
     data: () => {
         return {
             dialog: false,
@@ -157,7 +158,6 @@ export default {
 
         deleteItem(item) {
             this.editedIndex = this.rows.indexOf(item);
-            this.editedItem = Object.assign({}, item);
             this.dialogDelete = true;
         },
 
@@ -182,12 +182,19 @@ export default {
             });
         },
 
-        save() {
-            if (this.editedIndex > -1) {
-                Object.assign(this.desserts[this.editedIndex], this.editedItem);
-            } else {
-                this.desserts.push(this.editedItem);
+        save(defaultItem) {
+            
+            if (defaultItem.id){
+                this.$emit('edit-record', defaultItem);
             }
+            else{
+                this.$emit('new-record', defaultItem);
+            }
+            // if (this.editedIndex > -1) {
+            //     Object.assign(this.desserts[this.editedIndex], this.editedItem);
+            // } else {
+            //     this.desserts.push(this.editedItem);
+            // }
             this.close();
         }
     }
