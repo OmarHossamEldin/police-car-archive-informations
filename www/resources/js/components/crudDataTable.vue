@@ -2,7 +2,7 @@
     <v-data-table
         :headers="headers"
         :items="rows"
-        :items-per-page="5"
+        :items-per-page="10"
         class="elevation-1"
     >
         <template v-slot:top>
@@ -155,48 +155,28 @@ export default {
             this.defaultItem = Object.assign({}, item);
             this.dialog = true;
         },
-
+        close() {
+            this.dialog = false;
+        },
+        save(defaultItem) {
+            if (defaultItem.id) {
+                this.$emit("edit-record", defaultItem);
+            } else {
+                this.$emit("new-record", defaultItem);
+            }
+            this.close();
+        },
         deleteItem(item) {
             this.editedIndex = this.rows.indexOf(item);
             this.dialogDelete = true;
         },
-
         deleteItemConfirm() {
-            this.rows.splice(this.editedIndex, 1);
+            this.$emit("delete-record", this.editedIndex);
             this.closeDelete();
         },
-
-        close() {
-            this.dialog = false;
-            this.$nextTick(() => {
-                this.defaultItem = Object.assign({}, this.defaultItem);
-                this.editedIndex = -1;
-            });
-        },
-
         closeDelete() {
             this.dialogDelete = false;
-            this.$nextTick(() => {
-                this.editedItem = Object.assign({}, this.defaultItem);
-                this.editedIndex = -1;
-            });
-        },
-
-        save(defaultItem) {
-            
-            if (defaultItem.id){
-                this.$emit('edit-record', defaultItem);
-            }
-            else{
-                this.$emit('new-record', defaultItem);
-            }
-            // if (this.editedIndex > -1) {
-            //     Object.assign(this.desserts[this.editedIndex], this.editedItem);
-            // } else {
-            //     this.desserts.push(this.editedItem);
-            // }
-            this.close();
-        }
+        },       
     }
 };
 </script>

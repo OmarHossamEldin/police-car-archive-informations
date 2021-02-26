@@ -49,7 +49,7 @@ Route::group(['prefix'=>'/'],function(){
         // answering safetyQuestion to get key and answer for safety
         Route::post('safetyQuestion','App\Http\Controllers\AuthController@answerQuestion')->name('answerStore');
         
-        Route::apiresource('users','App\Http\Controllers\UserController');
+        Route::apiResource('users','App\Http\Controllers\UserController');
     });
 
     Route::group(['middleware' => ['auth', 'SaftyQuestion']], function () {

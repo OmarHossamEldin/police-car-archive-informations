@@ -19,7 +19,7 @@
         "center_on_screen": true,
         "start_maximized": false,
         "start_fullscreen": false,
-        "always_on_top": false,
+        "always_on_top": true,
         "minimize_to_tray": false,
         "minimize_to_tray_message": "Minimized to tray"
     },
@@ -46,7 +46,7 @@
         "external_drag": true,
         "external_navigation": true,
         "reload_page_F5": true,
-        "devtools_F12": true,
+        "devtools_F12": false,
         "remote_debugging_port": 0,
         "command_line_switches": {},
         "enable_downloads": true,
@@ -54,8 +54,8 @@
             "enable_menu": true,
             "navigation": true,
             "print": true,
-            "view_source": true,
-            "open_in_external_browser": true,
+            "view_source": false,
+            "open_in_external_browser": false,
             "devtools": true
         }
     }

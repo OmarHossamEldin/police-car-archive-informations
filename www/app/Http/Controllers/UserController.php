@@ -46,6 +46,7 @@ class UserController extends Controller
         $validateData = $request->validate($this->validationRules);
         $validateData['password'] = bcrypt($validateData['password']);
         $user = User::create($validateData);
+        $user = $user->only(['id', 'name', 'username']);
         return response()->json(['message' => 'لقد تم انشاء مستخدم جديد بنجاح', 'user' => $user], 201);
     }
 
@@ -70,8 +71,10 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $this->validationRules['username'] = 'required|string|unique:users,id';
+        $this->validationRules['password'] = 'optional|min:8';
         $validateData = $request->validate($this->validationRules);
         $user->update($validateData);
+        $user = $user->only(['id', 'name', 'username']);
         return response()->json(['message' => 'تم تحديث بيانات المستخدم', 'user' => $user], 206);
     }
 
@@ -84,6 +87,6 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return response()->json(204);
+        return response()->json([],204);
     }
 }
