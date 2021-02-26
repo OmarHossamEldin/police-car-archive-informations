@@ -11,10 +11,9 @@ namespace App\Helpers;
 class collectionFormatter
 {
     /**
-     * formate collection into headers for table usage
-     *
+     * format collection into headers for table usage
      * @param object $collection
-     * @return array
+     * @return array $headers
      */
     public static function headers(object $collection): array
     {
@@ -22,15 +21,23 @@ class collectionFormatter
         array_push($headers, 'actions');
         foreach ($headers as $key => $header) {
 
-            if ($key === array_key_first($headers))
-                $headers[$key] = ['text' => $header,  'align' => "start", 'value' => $header, "sortable" => false];
-
             if ($key === array_key_last($headers))
                 $headers[$key] = ['text' => $header, 'value' => $header, "sortable" => false];
 
-            if ($key !== array_key_first($headers) && $key !== array_key_last($headers))
+            if ($key !== array_key_last($headers))
                 $headers[$key] = ['text' => $header, 'value' => $header];
         }
         return $headers;
+    }
+
+    /**
+     * format collection into rows for table usage
+     * @param object $collection
+     * @return array $dataTable
+     */
+    public static function data(object $collection): array
+    {
+        $dataTable = $collection->toArray();
+        return $dataTable;
     }
 }
