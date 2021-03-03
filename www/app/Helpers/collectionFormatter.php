@@ -17,7 +17,10 @@ class collectionFormatter
      */
     public static function headers(object $collection): array
     {
-        $headers = array_keys($collection->first()->toArray());
+        if (count($collection) > 0)
+            $headers = array_keys($collection->first()->toArray());
+        else
+            $headers = ['id', 'name'];
         array_push($headers, 'actions');
         foreach ($headers as $key => $header) {
 
@@ -37,7 +40,7 @@ class collectionFormatter
      */
     public static function data(object $collection): array
     {
-        $dataTable = $collection->toArray();
+        $dataTable = count($collection) > 0 ? $collection->toArray() : [];
         return $dataTable;
     }
 }

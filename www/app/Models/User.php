@@ -20,4 +20,14 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Models\SaftyQuestion');
     }
+    
+    /**
+     * relation defines that user has many sections,
+     * created by him.
+     * @return void
+     */
+    public function section()
+    {
+        return $this->hasMany('App\Models\Section');
+    }
 }

@@ -132,7 +132,12 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         title: 'الادارات',
         icon: 'mdi-archive',
-        url: '/management',
+        url: '/managements',
+        saftyQuestion: true
+      }, {
+        title: 'القطاعات',
+        icon: 'mdi-class',
+        url: '/sections',
         saftyQuestion: true
       }, {
         title: 'موديلات السيارات',

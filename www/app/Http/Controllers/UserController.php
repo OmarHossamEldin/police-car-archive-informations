@@ -28,7 +28,7 @@ class UserController extends Controller
         $users = User::select(['id', 'name', 'username'])->get();
         $headers = collectionFormatter::headers($users);
         $dataTable = collectionFormatter::data($users);
-        return Inertia::render('User/index', [
+        return Inertia::render('Users/index', [
             'title' => 'المستخدمين',
             'headers' => $headers,
             'dataTable' => $dataTable
